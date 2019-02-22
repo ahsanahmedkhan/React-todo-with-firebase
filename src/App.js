@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import Note from './Note/Note';
+import NoteForm from './NoteForm/NoteForm'
 import './App.css';
 
 class App extends Component {
 
   constructor(props){
     super(props);
+    this.addNote = this.addNote.bind(this);
 
     this.state = {
       notes:[
@@ -13,7 +15,16 @@ class App extends Component {
         {id: 2, noteContent: "Note 2 here !"},
       ],
     }
+    
   }
+
+  addNote(note){
+
+    this.state.notes.push(note);
+  }
+
+
+
   render() {
     return (
       <div className="notesWrapper">
@@ -37,7 +48,7 @@ class App extends Component {
           </div>
 
       <div className="notesfooter">
-        Footer will go here!
+        <NoteForm addNote={this.addNote} />
       </div>
 
       </div>
